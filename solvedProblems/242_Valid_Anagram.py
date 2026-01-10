@@ -3,19 +3,22 @@ class Solution:
         if len(s) != len(t):
             return False
         
-        count_map_s = {}
-        count_map_t = {}
+        map_1 = {}
+        map_2 = {}
 
         for item in s:
-            if item not in count_map_s:
-                count_map_s[item] = 1
+            if item in map_1:
+                map_1[item] += 1
             else:
-                count_map_s[item] += 1
-
+                map_1[item] = 1
         for item in t:
-            if item not in count_map_t:
-                count_map_t[item] = 1
+            if item in map_2:
+                map_2[item] += 1
             else:
-                count_map_t[item] += 1
+                map_2[item] = 1
+                
+        if map_1 == map_2:
+            return True
+        else:
+            return False
 
-        return count_map_t == count_map_s
